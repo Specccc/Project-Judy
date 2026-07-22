@@ -1,4 +1,6 @@
 import asyncio
+import os
+
 import discord
 from discord.ext import commands
 
@@ -35,6 +37,32 @@ async def on_ready():
     success(f"Connected as {bot.user}")
 
     try:
+        synced = await bot.tree.sync()
+        success(f"Synced {len(synced)} slash commands.")
+    except Exception as e:
+        error(f"Command sync failed: {e}")
+
+# ==================================================
+# Run Bot
+# ==================================================
+
+async def main():
+    from config import DISCORD_TOKEN
+
+    if not DISCORD_TOKEN:
+        raise RuntimeError("DISCORD_TOKEN is missing.")
+
+    # Load all cogs
+    for filename in os.listdir("cogs"):
+        if filename.endswith(".py"):
+            await bot.load_extension(f"cogs.{filename[:-3]}")
+            info(f"Loaded cog: {filename}")
+
+    async with bot:
+        await bot.start(DISCORD_TOKEN)
+
+if __name__ == "__main__":
+    asyncio.run(main())    try:
         synced = await bot.tree.sync()
         success(f"Synced {len(synced)} slash commands.")
     except Exception as e:

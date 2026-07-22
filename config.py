@@ -1,7 +1,10 @@
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
+# ==================================================
+# Load Environment Variables
+# ==================================================
+
 load_dotenv()
 
 # ==================================================
@@ -9,7 +12,7 @@ load_dotenv()
 # ==================================================
 
 BOT_NAME = "Project Judy"
-BOT_VERSION = "1.0.0"
+BOT_VERSION = "1.3.0"
 
 # ==================================================
 # Discord

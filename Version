@@ -1,0 +1,16 @@
+Project Judy
+Version: 1.3.0
+Status: Migration Build
+
+Host:
+- GitHub
+- ACLClouds
+
+Python: 3.11
+Framework: discord.py
+
+Current Phase:
+Migration from Replit
+
+Next Milestone:
+First successful boot on ACLClouds

@@ -1,24 +1,53 @@
-# Project-Judy
-Project Judy — An AI-powered Discord bot featuring moderation, leveling, ambient interactions, media, and intelligent server management.
 # Project Judy
 
-Project Judy is an AI-powered Discord bot built to provide modern server management with a personality.
-
-Unlike traditional Discord bots, Judy combines moderation, automation, leveling, configurable member experiences, AI-powered conversations, and ambient interactions into a single, cohesive experience.
-
----
+Project Judy is a modular Discord bot written in Python using discord.py.
 
 ## Features
 
-### Moderation
-- Kick
-- Ban
-- Timeout
-- Basic moderation tools
-- Moderation logging
+- Modular Cog architecture
+- Google Gemini AI integration
+- SQLite database
+- Slash commands
+- Logging system
+- Diagnostics
+- Welcome system
+- Future image generation support
 
-### Member Experience
-- Custom welcome messages
+## Project Structure
+
+```
+Project-Judy/
+├── assets/
+├── cogs/
+├── database/
+├── ai_service.py
+├── config.py
+├── database.py
+├── errors.py
+├── log_service.py
+├── logger.py
+├── main.py
+├── requirements.txt
+└── welcome_service.py
+```
+
+## Requirements
+
+- Python 3.11+
+- discord.py
+- python-dotenv
+- aiosqlite
+- google-genai
+
+## Current Status
+
+Migrating from Replit to GitHub and ACLClouds.
+
+The objective is to make ACLClouds the permanent production host.
+
+## License
+
+See LICENSE.- Custom welcome messages
 - Custom goodbye messages
 - Welcome DMs
 - Auto Roles

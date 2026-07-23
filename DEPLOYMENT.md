@@ -1,5 +1,8 @@
 # ACLClouds Deployment
 
+Project Judy 2.0.0 was successfully deployed and production-tested on
+ACLClouds on 23 July 2026.
+
 ## Preserve Runtime Data
 
 Before uploading 2.0, keep the existing:
@@ -36,6 +39,8 @@ The first startup automatically:
 
 Global Discord commands may take time to refresh in clients.
 
+The successful production deployment synchronized 43 global slash commands.
+
 ## Release Test
 
 Run in order:
@@ -52,6 +57,9 @@ Run in order:
 10. `/image`
 11. One reversible moderation test
 12. `/setup_status`
+
+The production release passed this validation sequence. Repeat it after source,
+dependency, environment, or hosting changes.
 
 Do not test `/data_delete` on the production server unless the stored server
 data is intentionally being removed.

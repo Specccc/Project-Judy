@@ -6,6 +6,9 @@ presence, moderation, leveling, image search, diagnostics, and owner tools.
 
 Current version: **2.0.0**
 
+Release status: **Production Stable** — deployed and verified on ACLClouds on
+23 July 2026.
+
 ## 2.0 Highlights
 
 - One Gemini client and request pipeline shared by every AI feature
@@ -114,8 +117,23 @@ installation.
 
 - [Architecture](ARCHITECTURE.md)
 - [Changelog](CHANGELOG.md)
+- [Deployment](DEPLOYMENT.md)
 - [Privacy Policy](privacy-policy.md)
 - [Terms of Service](terms-of-service.md)
+- [Support](SUPPORT.md)
+- [Security Policy](SECURITY.md)
+- [Contributing](CONTRIBUTING.md)
+
+## Public Use
+
+Before adding Judy to a community, review the Privacy Policy and Terms of
+Service. Server administrators can run `/setup` to configure Judy, `/help` to
+view commands, `/support` for assistance, and `/data_delete confirm:True` to
+remove data stored for their server.
+
+Bug reports and non-sensitive support requests belong in
+[GitHub Issues](https://github.com/Specccc/Project-Judy/issues). Do not include
+bot tokens, API keys, passwords, private message content, or other secrets.
 
 ## License
 

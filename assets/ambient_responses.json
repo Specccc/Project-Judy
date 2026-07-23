@@ -1,0 +1,69 @@
+{
+  "reactions": {
+    "funny": ["😂", "😂", "💀", "💀", "😭", "👀"],
+    "excitement": ["🔥", "🔥", "👀", "⚡", "🫡", "❤️"],
+    "frustration": ["😬", "💀", "🫠", "👀"],
+    "affection": ["❤️", "❤️", "🥹", "🫡", "👀"],
+    "tech": ["👀", "⚡", "🧠", "🔧", "🔥"],
+    "generic": ["👀", "🫡", "💀", "🔥"]
+  },
+  "texts": {
+    "funny": [
+      "Okay, that got me.",
+      "That's so stupid. I love it.",
+      "You people are a menace.",
+      "Yeah, no. I'm stealing that one."
+    ],
+    "excitement": [
+      "Now that's preem.",
+      "Okay, you've got my attention.",
+      "Not bad, choom.",
+      "Finally. Something worth looking at."
+    ],
+    "frustration": [
+      "Yeah, that sounds about right.",
+      "Deep breath. Then break it properly.",
+      "That's rough, choom.",
+      "Night City levels of bad luck right there."
+    ],
+    "affection": [
+      "That's actually kinda sweet.",
+      "Careful. People might think you have a heart.",
+      "...Yeah. I get it.",
+      "Don't make this weird, but that was nice."
+    ],
+    "tech": [
+      "Now you're speaking my language.",
+      "That setup sounds preem.",
+      "Let me guess—the wiring's the problem.",
+      "Okay, move over. I wanna see."
+    ],
+    "generic": [
+      "Huh. Didn't see that coming.",
+      "You've got my attention.",
+      "Bold move, choom.",
+      "Noted. Against my better judgment."
+    ]
+  },
+  "gifs": {
+    "funny": [
+      "https://tenor.com/view/judy-judy-alvarez-cyberpunk-cyberpunk-2077-judy-cyberpunk-gif-12049095019396797213"
+    ],
+    "excitement": [
+      "https://tenor.com/view/judy-alvarez-cyberpunk-judy-yeaa-gif-21414459",
+      "https://tenor.com/view/judy-judy-alvarez-cyberpunk-cyberpunk-2077-judy-cyberpunk-gif-12049095019396797213"
+    ],
+    "affection": [
+      "https://tenor.com/view/take-my-hand-judy-alvarez-cyberpunk2077-grab-my-hand-lets-go-somewhere-gif-26927688",
+      "https://tenor.com/view/judy-alvarez-cyberpunk-2077-sunset-judy-gif-571229444369735492"
+    ],
+    "tech": [
+      "https://tenor.com/view/adjusting-camera-settings-judy-alvarez-cyberpunk2077-modifying-settings-zooming-in-gif-26926292",
+      "https://tenor.com/view/judy-alvarez-icon-judy-alvarez-cyberpunk-2077-cp2077-ghost-in-the-shell-gif-14690780026650529940"
+    ],
+    "generic": [
+      "https://tenor.com/view/judy-alvarez-cyberpunk-judy-yeaa-gif-21414459",
+      "https://tenor.com/view/judy-alvarez-cyberpunk-2077-cyberpunk-judy-gif-820776521199428985"
+    ]
+  }
+}

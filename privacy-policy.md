@@ -1,81 +1,76 @@
 # Privacy Policy
 
-**Last Updated:** 21 July 2026
+**Last Updated:** 23 July 2026
 
-## Introduction
+## Scope
 
-Project Judy ("Judy") is a Discord bot designed to provide moderation, server management, leveling, automation, and AI-powered interactions.
+Project Judy is a Discord bot providing AI chat, ambient interactions,
+moderation, leveling, image search, setup, and diagnostics.
 
-This Privacy Policy explains what information Judy collects, how it is used, and how it is protected.
+## Data Processed
 
----
+Depending on enabled features, Judy may process or store:
 
-## Information Collected
+- Discord user, server, channel, and moderator IDs
+- selected server configuration
+- XP totals and XP-earning message counts
+- moderation warnings and supplied reasons
+- recent conversation text in configured chat channels
+- user facts explicitly saved with `/remember`
+- image search terms
+- operational error and diagnostic information
 
-Judy may collect and store:
+Judy does not request Discord passwords, account credentials, payment data, or
+private authentication tokens from users.
 
-- Discord User IDs
-- Discord Server IDs
-- Discord Channel IDs
-- Discord Role IDs
-- Server configuration settings
-- Leveling and experience data
-- Command usage information
-- Diagnostic logs for troubleshooting
+## AI Processing
 
-Judy does **not** collect passwords, email addresses, payment information, or private Discord account credentials.
+When a user directly addresses Judy, the current message, recent channel
+conversation, relevant server-scoped user memory, display name, and server name
+may be sent to Google's Gemini service to generate a response.
 
----
+Rare ambient AI replies may send the triggering message, display name, server
+name, and reaction category to Gemini.
 
-## AI Features
+Server administrators can leave ambient AI behavior disabled.
 
-Some commands may send user-provided prompts to Google's Gemini API in order to generate responses.
+## Image Search
 
-Only the information required to complete the requested command is transmitted.
+The `/image` command may send the supplied search term to Serper. If Serper is
+not configured or available, Judy uses Wikimedia Commons.
 
----
+## Storage and Isolation
 
-## How Information Is Used
+Operational data is stored by the service hosting Judy. SQLite records are
+separated by Discord server ID. User memories are separated by both server ID
+and user ID. Recent conversation history is associated with a Discord channel
+ID and is limited in length.
 
-Collected information is used solely to:
+## Data Use
 
-- Provide bot functionality
-- Store server configuration
-- Manage leveling systems
-- Generate AI responses
-- Improve reliability
-- Diagnose errors
+Data is used to provide requested bot functions, preserve configured behavior,
+maintain leveling and moderation records, generate AI responses, and diagnose
+failures. Project Judy does not sell user data.
 
----
+## Deletion
 
-## Data Storage
+- `/conversation_clear` deletes the configured channel's recent conversation.
+- `/forget_me` deletes the requesting user's saved facts in the current server.
+- `/data_delete confirm:True` deletes Judy's stored data for the current server.
+- Removing Judy from a server triggers automatic server-data cleanup.
 
-Project Judy currently stores configuration and operational data using SQLite.
+Deletion from third-party provider logs is governed by the provider's own
+retention practices.
 
-Data is hosted with the service running the bot.
+## Security
 
----
+Credentials are stored outside the public repository. Public diagnostics do not
+display credential values. No internet-connected service can guarantee absolute
+security.
 
-## Data Sharing
+## Changes and Contact
 
-Project Judy does not sell or share collected information with third parties except where required to provide functionality (such as AI response generation through Google's Gemini API).
+Policy updates are published in the Project Judy repository. Privacy requests
+and reports can be submitted through:
 
----
-
-## Data Removal
-
-Server administrators may remove server configuration by using available configuration commands or by removing the bot from the server.
-
----
-
-## Changes
-
-This Privacy Policy may be updated as Project Judy evolves.
-
-The latest version will always be available on this page.
-
----
-
-## Contact
-
-For questions regarding this Privacy Policy, please contact the Project Judy developer through the official support server or GitHub repository.
+https://github.com/Specccc/Project-Judy/issues

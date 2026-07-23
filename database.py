@@ -1,13 +1,17 @@
 import aiosqlite
-from pathlib import Path
 
-DATABASE_PATH = Path("database/judy.db")
+from config import CORE_DATABASE_FILE, DATABASE_FOLDER
 
 
 async def connect():
-    DATABASE_PATH.parent.mkdir(exist_ok=True)
+    DATABASE_FOLDER.mkdir(
+        parents=True,
+        exist_ok=True
+    )
 
-    db = await aiosqlite.connect(DATABASE_PATH)
+    db = await aiosqlite.connect(
+        CORE_DATABASE_FILE
+    )
     return db
 
 

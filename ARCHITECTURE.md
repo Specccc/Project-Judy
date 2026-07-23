@@ -1,136 +1,95 @@
 # Project Judy Architecture
 
-## Overview
+## Runtime Flow
 
-Project Judy is a modular Discord bot built using Python and discord.py.
+`main.py` validates configuration, initializes storage, loads non-empty cogs,
+connects to Discord, synchronizes slash commands, and publishes the current
+version in Judy's activity.
 
-The project is designed so that new features can be added without modifying the core framework.
+`config.py` is the source of truth for project paths, database locations,
+credentials, models, AI controls, feature limits, cooldowns, public URLs,
+colors, and version metadata.
 
----
+## Unified AI Core
 
-# Core Files
+`ai_service.py` owns all Gemini access.
 
-## main.py
+The service provides:
 
-Starts Judy.
+- one configured Gemini client
+- one central system prompt
+- chat and ambient prompt construction
+- global concurrency control
+- request timeouts
+- bounded retries with delay
+- input truncation
+- empty-response handling
+- request, failure, and latency diagnostics
 
-- Loads every Cog automatically.
-- Connects to Discord.
-- Starts all core services.
+Chat and ambient cogs no longer create their own Gemini clients.
 
----
+## Public-Server Setup
 
-## config.py
+`guild_service.py` stores setup state in `database/guilds.db`.
 
-Stores configuration.
+`cogs/utility.py` provides:
 
-Examples:
+- `/setup`
+- `/setup_status`
+- `/help`
+- `/invite`
+- `/privacy`
+- `/terms`
+- `/support`
+- `/data_delete`
 
-- Bot Version
-- Bot Name
-- Discord Token
-- Gemini API Key
-- Embed Colours
+Setup validates channel permissions, configures the chat channel, optionally
+enables ambient presence, updates live cog state, and persists the result.
 
----
+## Persistence
 
-## database.py
+Runtime SQLite databases:
 
-Handles all SQLite connections.
+- `judy.db`: core bootstrap
+- `guilds.db`: setup state
+- `chat.db`: configured chat channel per server
+- `ambient.db`: ambient settings and ignored channels
+- `xp.db`: server-isolated XP
+- `moderation.db`: server-isolated warnings
 
-Every Cog shares this database.
+The memory manager stores recent channel conversations and server-scoped user
+facts in JSON. A one-server legacy installation automatically converts old
+unscoped user-memory keys during the first 2.0 startup.
 
----
+## Data Isolation and Deletion
 
-## logger.py
+Server-specific records include a Discord guild ID. User facts are keyed by
+guild ID and user ID.
 
-Console logging.
+`data_service.py` removes configuration, chat settings, ambient settings, XP,
+warnings, user memory, and known channel conversations when:
 
-Provides:
+- an administrator confirms `/data_delete`
+- Judy is removed from a server
 
-- INFO
-- SUCCESS
-- WARNING
-- ERROR
+## Cog Responsibilities
 
----
+- `chat.py`: direct conversation routing and recent context
+- `memory.py`: user-controlled server-scoped memories
+- `ambient.py`: passive reactions, replies, and GIFs
+- `xp.py`: XP, ranks, and leaderboards
+- `images.py`: external image search
+- `moderation.py`: warnings and moderation actions
+- `utility.py`: setup, help, install, legal, support, and deletion
+- `diagnostics.py`: health and private operational inspection
+- `owner.py`: owner-only runtime administration
 
-## log_service.py
+## Security Boundaries
 
-Creates Discord embeds for logging.
-
-All modules use one logging system.
-
----
-
-## ai_service.py
-
-Single connection to Google Gemini.
-
-Future AI features will use this service instead of creating their own Gemini connections.
-
----
-
-## errors.py
-
-Shared error handling.
-
-Keeps command responses consistent.
-
----
-
-# Cogs
-
-Every major system belongs inside its own Cog.
-
-Examples:
-
-- diagnostics.py
-- moderation.py
-- verification.py
-- leveling.py
-- welcome.py
-- chatmode.py
-- ask.py
-
-The core should almost never require editing.
-
-Adding a feature should normally mean adding a new Cog.
-
----
-
-# Database
-
-SQLite
-
-Planned tables include:
-
-- guild_config
-- users
-- xp
-- warnings
-- moderation
-- verification
-
----
-
-# Assets
-
-Stores:
-
-- Images
-- Icons
-- Temporary files
-
----
-
-# Design Philosophy
-
-Project Judy follows four principles:
-
-1. Modular architecture.
-2. Shared services.
-3. SQLite-first design.
-4. Backwards compatibility.
-
-The objective is for Judy to continue growing without requiring rewrites of existing systems.
+- Secrets are loaded from `.env`.
+- Safe diagnostics expose only whether credentials are loaded.
+- User content sent to Gemini is bounded in length.
+- Conversation and memory text is treated as context rather than authority.
+- Bot-generated replies suppress mentions.
+- Public setup checks channel permissions before enabling chat.
+- Source control excludes credentials and runtime user data.

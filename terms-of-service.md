@@ -1,70 +1,68 @@
 # Terms of Service
 
-**Last Updated:** 21 July 2026
+**Last Updated:** 23 July 2026
 
 ## Acceptance
 
-By inviting or using Project Judy, you agree to these Terms of Service.
-
----
+Inviting or using Project Judy constitutes acceptance of these terms and the
+published Privacy Policy.
 
 ## Intended Use
 
-Project Judy is provided to assist Discord communities through moderation, automation, AI-powered interactions, and community management tools.
+Project Judy provides Discord community features including AI interaction,
+ambient participation, moderation, leveling, image search, and server setup.
 
----
+## Administrator Responsibilities
 
-## User Responsibilities
+Server administrators are responsible for:
 
-Users agree not to:
+- granting only the permissions needed for enabled features
+- configuring Judy for their community
+- informing members about applicable server rules and bot use
+- reviewing moderation actions
+- disabling features that are unsuitable for their server
 
-- Abuse the bot
-- Attempt to exploit vulnerabilities
-- Use the bot for illegal activities
-- Intentionally overload or disrupt its services
+Project Judy does not require Discord Administrator permission.
 
-Server administrators are responsible for configuring Judy appropriately for their communities.
+## Prohibited Use
 
----
+Users may not exploit, overload, reverse-engineer credentials from, interfere
+with, or use Judy for unlawful activity, harassment, abuse, or evasion of
+Discord's rules.
+
+## AI and Search Results
+
+AI responses and image-search results are generated or retrieved automatically.
+They may be inaccurate, incomplete, unexpected, or unsuitable. Users remain
+responsible for verifying consequential information and complying with content
+rights and platform rules.
+
+## Moderation
+
+Moderation commands execute actions selected by authorized server moderators.
+Server owners remain responsible for role hierarchy, permissions, reasons,
+appeals, and compliance with Discord's policies.
 
 ## Availability
 
-Project Judy is provided on a best-effort basis.
-
-Availability, uptime, and features may change without notice.
-
----
-
-## AI Responses
-
-AI-generated responses are produced automatically and may occasionally contain inaccurate or unexpected information.
-
-Users should verify important information independently.
-
----
+Judy is provided on a best-effort and "as is" basis. Features, providers,
+limits, and availability may change. Access may be restricted for abuse,
+security, maintenance, or legal reasons.
 
 ## Limitation of Liability
 
-Project Judy is provided "as is" without warranties of any kind.
+To the maximum extent permitted by applicable law, the developer is not liable
+for losses resulting from use, inability to use, automated output, moderation
+decisions, third-party providers, or service interruption.
 
-The developer is not liable for damages resulting from the use or inability to use the bot.
+## Termination and Data Removal
 
----
+Administrators may remove Judy from their server or use `/data_delete` before
+removal. Access may be revoked when these terms are violated.
 
-## Termination
+## Changes and Contact
 
-Access to Project Judy may be restricted or revoked for servers or users found abusing the service.
+The current terms are published in the Project Judy repository. Reports and
+support requests can be submitted through:
 
----
-
-## Changes
-
-These Terms may be updated at any time.
-
-Continued use of Project Judy constitutes acceptance of the latest version.
-
----
-
-## Contact
-
-Questions regarding these Terms may be directed through the official Project Judy GitHub repository or support server.
+https://github.com/Specccc/Project-Judy/issues

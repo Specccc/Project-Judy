@@ -30,27 +30,56 @@ conversation, relevant server-scoped user memory, display name, and server name
 may be sent to Google's Gemini service to generate a response.
 
 Rare ambient AI replies may send the triggering message, display name, server
-name, and reaction category to Gemini.
-
-Server administrators can leave ambient AI behavior disabled.
+name, and reaction category to Gemini. Server administrators can leave ambient
+AI behavior disabled.
 
 ## Image Search
 
 The `/image` command may send the supplied search term to Serper. If Serper is
-not configured or available, Judy uses Wikimedia Commons.
+not configured or available, Judy uses Wikimedia Commons. Search providers may
+receive the search term and ordinary connection metadata needed to complete the
+request.
 
-## Storage and Isolation
+## Storage, Isolation, and Retention
 
 Operational data is stored by the service hosting Judy. SQLite records are
 separated by Discord server ID. User memories are separated by both server ID
 and user ID. Recent conversation history is associated with a Discord channel
-ID and is limited in length.
+ID and is limited to the latest 20 entries per channel.
+
+Retention depends on the data type:
+
+- recent conversation entries remain until displaced by newer entries, cleared
+  with `/conversation_clear`, deleted with `/data_delete`, or removed when Judy
+  leaves the server
+- saved user facts remain until `/forget_me`, `/data_delete`, or server removal
+- XP, warnings, and server configuration remain until `/data_delete` or server
+  removal
+- operational logs and backups, if any, follow the host operator's retention
+  and deletion processes
 
 ## Data Use
 
 Data is used to provide requested bot functions, preserve configured behavior,
 maintain leveling and moderation records, generate AI responses, and diagnose
 failures. Project Judy does not sell user data.
+
+## Third-Party Services
+
+Judy relies on third parties to provide parts of the service:
+
+- [Discord](https://discord.com/privacy) supplies messages, interactions,
+  identities, servers, channels, and permission information required by the bot
+- [Google Gemini](https://policies.google.com/privacy) receives the AI inputs
+  described above and returns generated responses
+- [Serper](https://serper.dev/privacy), when configured, receives image-search
+  terms
+- [Wikimedia Commons](https://foundation.wikimedia.org/wiki/Policy:Privacy_policy)
+  may receive fallback image-search requests
+- ACLClouds hosts the running bot and its operational files
+
+Those services process information under their own policies. Project Judy
+cannot directly control or delete copies retained in third-party systems.
 
 ## Deletion
 
@@ -60,7 +89,8 @@ failures. Project Judy does not sell user data.
 - Removing Judy from a server triggers automatic server-data cleanup.
 
 Deletion from third-party provider logs is governed by the provider's own
-retention practices.
+retention practices. A deletion request only affects data controlled by the
+Project Judy deployment.
 
 ## Security
 
@@ -70,7 +100,8 @@ security.
 
 ## Changes and Contact
 
-Policy updates are published in the Project Judy repository. Privacy requests
-and reports can be submitted through:
+Material policy updates are published in the Project Judy repository. Continued
+use after an update means the revised policy applies to future use. Privacy
+requests and reports can be submitted through:
 
 https://github.com/Specccc/Project-Judy/issues

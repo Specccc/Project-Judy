@@ -15,6 +15,10 @@ from config import (
     CHAT_USER_COOLDOWN_SECONDS,
     DATABASE_FOLDER,
 )
+from identity_service import (
+    build_identity_context,
+    record_interaction,
+)
 
 from memory.memory_manager import (
     add_conversation_message,
@@ -463,6 +467,22 @@ class Chat(commands.Cog):
             )
 
             await asyncio.to_thread(
+                record_interaction,
+                guild_id,
+                user_id,
+                message.author.display_name,
+                clean_message
+            )
+
+            identity_context = (
+                await asyncio.to_thread(
+                    build_identity_context,
+                    guild_id,
+                    user_id
+                )
+            )
+
+            await asyncio.to_thread(
                 add_conversation_message,
                 channel_id,
                 "user",
@@ -486,6 +506,9 @@ class Chat(commands.Cog):
                             ),
                             memory_context=(
                                 user_memory_context
+                            ),
+                            identity_context=(
+                                identity_context
                             ),
                             server_name=(
                                 message.guild.name

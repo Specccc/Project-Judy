@@ -25,6 +25,9 @@ from config import (
     safe_configuration_summary,
     validate_configuration,
 )
+from identity_service import (
+    identity_statistics,
+)
 
 
 STARTED_AT = datetime.now(timezone.utc)
@@ -436,6 +439,12 @@ class Diagnostics(commands.Cog):
             )
         )
 
+        identity_information = (
+            await asyncio.to_thread(
+                identity_statistics
+            )
+        )
+
         disk = shutil.disk_usage(
             PROJECT_ROOT
         )
@@ -527,6 +536,26 @@ class Diagnostics(commands.Cog):
                 f"`{ambient_information['status']}` "
                 f"({format_bytes(ambient_information['size'])})"
             ),
+            inline=False
+        )
+
+        tier_text = ", ".join(
+            f"{name}: {count}"
+            for name, count
+            in identity_information[
+                "tiers"
+            ].items()
+        )
+
+        embed.add_field(
+            name="Identity System",
+            value=(
+                f"Profiles: "
+                f"`{identity_information['profiles']}`\n"
+                f"Relationships: "
+                f"`{identity_information['relationships']}`\n"
+                f"Tiers: `{tier_text}`"
+            )[:1024],
             inline=False
         )
 

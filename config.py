@@ -41,6 +41,7 @@ MODERATION_DATABASE_FILE = (
     DATABASE_FOLDER / "moderation.db"
 )
 GUILD_DATABASE_FILE = DATABASE_FOLDER / "guilds.db"
+IDENTITY_DATABASE_FILE = DATABASE_FOLDER / "identity.db"
 
 
 # ==================================================
@@ -55,7 +56,7 @@ load_dotenv(ENV_FILE)
 # ==================================================
 
 BOT_NAME = "Project Judy"
-BOT_VERSION = "2.0.0"
+BOT_VERSION = "2.1.0"
 COMMAND_PREFIX = "!"
 
 PROJECT_REPOSITORY_URL = (
@@ -119,6 +120,7 @@ AI_MAX_INPUT_CHARACTERS = 16000
 AI_CHAT_MESSAGE_MAX_CHARACTERS = 4000
 AI_CONVERSATION_MAX_CHARACTERS = 5000
 AI_MEMORY_MAX_CHARACTERS = 2000
+AI_IDENTITY_MAX_CHARACTERS = 1500
 AI_AMBIENT_MESSAGE_MAX_CHARACTERS = 1000
 
 
@@ -144,6 +146,15 @@ CHAT_ERROR_MESSAGE = (
 MEMORY_MAX_CONVERSATION_MESSAGES = 20
 MEMORY_MAX_FACT_LENGTH = 1000
 MEMORY_MAX_FACTS_PER_USER = 50
+
+
+# ==================================================
+# Identity and Relationships
+# ==================================================
+
+PROFILE_MAX_PREFERRED_NAME_LENGTH = 32
+RELATIONSHIP_SCORE_MINIMUM = -100
+RELATIONSHIP_SCORE_MAXIMUM = 100
 
 
 # ==================================================

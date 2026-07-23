@@ -3,9 +3,11 @@
 Project Judy 2.0.0 was successfully deployed and production-tested on
 ACLClouds on 23 July 2026.
 
+These instructions also apply to the 2.1 identity and relationship upgrade.
+
 ## Preserve Runtime Data
 
-Before uploading 2.0, keep the existing:
+Before uploading 2.1, keep the existing:
 
 - `.env`
 - `database/`
@@ -17,7 +19,7 @@ Do not replace those items with repository files.
 ## Deploy
 
 1. Stop the ACLClouds server.
-2. Upload the 2.0 repository files into `/home/container`.
+2. Upload the 2.1 repository files into `/home/container`.
 3. Replace matching source files and folders.
 4. Leave `.env`, `database/`, and runtime memory JSON files intact.
 5. Confirm the Startup Main File is `main.py`.
@@ -31,6 +33,7 @@ ACLClouds may leave that package installed; it is unused.
 The first startup automatically:
 
 - creates `guilds.db`
+- creates `identity.db` with profile and relationship tables
 - adds any missing database tables
 - migrates legacy user-memory keys when Judy is currently installed in one
   server
@@ -53,10 +56,14 @@ Run in order:
 6. `/remember`
 7. `/memories`
 8. `/ambient_preview`
-9. `/rank`
-10. `/image`
-11. One reversible moderation test
-12. `/setup_status`
+9. `/profile`
+10. `/relationship`
+11. `/set_name`
+12. Address Judy again and confirm the preferred name is used naturally
+13. `/rank`
+14. `/image`
+15. One reversible moderation test
+16. `/setup_status`
 
 The production release passed this validation sequence. Repeat it after source,
 dependency, environment, or hosting changes.

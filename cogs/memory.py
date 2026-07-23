@@ -3,6 +3,9 @@ from discord.ext import commands
 from discord import app_commands
 
 from config import MEMORY_MAX_FACT_LENGTH
+from identity_service import (
+    delete_user_identity,
+)
 from memory.memory_manager import (
     forget_user,
     get_user_memory,
@@ -74,12 +77,7 @@ class MemoryCog(commands.Cog):
             ephemeral=True
         )
 
-    @app_commands.command(
-        name="memories",
-        description="Show what Judy remembers about you."
-    )
-    @app_commands.guild_only()
-    async def memories(
+    async def _send_memories(
         self,
         interaction: discord.Interaction
     ):
@@ -111,6 +109,32 @@ class MemoryCog(commands.Cog):
         )
 
     @app_commands.command(
+        name="memories",
+        description="Show what Judy remembers about you."
+    )
+    @app_commands.guild_only()
+    async def memories(
+        self,
+        interaction: discord.Interaction
+    ):
+        await self._send_memories(
+            interaction
+        )
+
+    @app_commands.command(
+        name="memory",
+        description="Show what Judy remembers about you."
+    )
+    @app_commands.guild_only()
+    async def memory(
+        self,
+        interaction: discord.Interaction
+    ):
+        await self._send_memories(
+            interaction
+        )
+
+    @app_commands.command(
         name="forget_me",
         description="Delete everything Judy remembers about you."
     )
@@ -124,8 +148,14 @@ class MemoryCog(commands.Cog):
             interaction.user.id
         )
 
+        delete_user_identity(
+            interaction.guild.id,
+            interaction.user.id
+        )
+
         await interaction.response.send_message(
-            "Long-term memory wiped. Clean slate, choom.",
+            "Memory, profile and relationship state wiped. "
+            "Clean slate, choom.",
             ephemeral=True
         )
 

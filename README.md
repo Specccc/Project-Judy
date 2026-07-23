@@ -4,10 +4,19 @@ Project Judy is a personality-driven Discord bot built with Python and
 `discord.py`. It combines character chat, server-scoped memory, ambient
 presence, moderation, leveling, image search, diagnostics, and owner tools.
 
-Current version: **2.0.0**
+Current version: **2.1.0**
 
-Release status: **Production Stable** — deployed and verified on ACLClouds on
-23 July 2026.
+Release status: **Release Candidate**
+
+## 2.1 Highlights
+
+- Server-scoped user profiles and preferred names
+- Gradual trust, familiarity, and affinity progression
+- Relationship tiers from stranger through close
+- Identity context integrated into the unified AI pipeline
+- `/profile`, `/relationship`, and `/set_name`
+- Identity statistics in owner diagnostics
+- Profile and relationship deletion through `/forget_me` and `/data_delete`
 
 ## 2.0 Highlights
 
@@ -25,6 +34,7 @@ Release status: **Production Stable** — deployed and verified on ACLClouds on
 
 - Directed character chat with recent channel history
 - Persistent user facts isolated by Discord server
+- Server-scoped profiles and relationship development
 - Optional ambient reactions, short replies, and GIF responses
 - XP, ranks, and server leaderboards
 - Moderation warnings, timeouts, kicks, bans, and message purging
@@ -45,6 +55,7 @@ Project-Judy/
 ├── data_service.py         # Server-data deletion
 ├── database.py             # Core database bootstrap
 ├── guild_service.py        # Public-server setup state
+├── identity_service.py     # Profiles and relationship progression
 ├── main.py                 # Startup and cog loading
 └── requirements.txt
 ```
@@ -95,7 +106,8 @@ Never commit `.env` or share its contents.
 - Setup: `/setup`, `/setup_status`, `/help`, `/invite`
 - Chat: `/chatmode_on`, `/chatmode_off`, `/chatmode_status`,
   `/conversation_clear`
-- Memory: `/remember`, `/memories`, `/forget_me`
+- Memory: `/remember`, `/memory`, `/memories`, `/forget_me`
+- Identity: `/profile`, `/relationship`, `/set_name`
 - Ambient: `/ambient_on`, `/ambient_off`, `/ambient_status`,
   `/ambient_ignore`, `/ambient_allow`, `/ambient_preview`
 - XP: `/rank`, `/leaderboard`

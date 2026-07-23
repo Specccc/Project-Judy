@@ -4,6 +4,7 @@ from config import (
     AMBIENT_DATABASE_FILE,
     CHAT_DATABASE_FILE,
     GUILD_DATABASE_FILE,
+    IDENTITY_DATABASE_FILE,
     MODERATION_DATABASE_FILE,
     XP_DATABASE_FILE,
 )
@@ -29,6 +30,10 @@ GUILD_TABLES = {
     ),
     GUILD_DATABASE_FILE: (
         "guild_settings",
+    ),
+    IDENTITY_DATABASE_FILE: (
+        "user_profiles",
+        "relationships",
     ),
 }
 

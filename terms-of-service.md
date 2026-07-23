@@ -15,6 +15,8 @@ appropriate for its members and jurisdiction.
 
 Project Judy provides Discord community features including AI interaction,
 ambient participation, moderation, leveling, image search, and server setup.
+Judy may adapt her conversational tone using server-scoped profile and
+relationship state generated from direct interactions.
 
 ## Administrator Responsibilities
 

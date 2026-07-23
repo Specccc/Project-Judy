@@ -2,6 +2,26 @@
 
 All notable changes to Project Judy are documented here.
 
+## v2.1.0 — Identity and Relationships
+
+### Added
+
+- Server-scoped user profile database
+- Preferred names through `/set_name`
+- `/profile` and `/relationship` views
+- `/memory` alias for the existing memory view
+- Gradual trust, familiarity, and affinity progression
+- Stranger, acquaintance, choom, trusted, and close relationship tiers
+- Identity context in the unified AI request pipeline
+- Profile and relationship statistics in owner diagnostics
+- Automated identity-service tests
+
+### Changed
+
+- `/forget_me` now removes memory, profile, and relationship state
+- `/data_delete` and automatic guild cleanup now include identity data
+- Public documentation now explains relationship-state processing
+
 ## v2.0.0 — Unified AI Core
 
 **Released:** 23 July 2026
@@ -68,5 +88,6 @@ Included in the production 2.0.0 release.
 
 ## v1.3.0 — Migration Build
 
-- Migrated Project Judy from Replit to GitHub and ACLClouds ( This was originally a passion project and a learning experiance. ) 
+- Migrated Project Judy from Replit to GitHub and ACLClouds (This was
+  originally a passion project and a learning experience.)
 - Added the modular project foundation

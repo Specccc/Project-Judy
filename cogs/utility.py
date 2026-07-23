@@ -346,7 +346,11 @@ class Utility(commands.Cog):
                 "`/chatmode_off` `/conversation_clear`"
             ),
             "Memory": (
-                "`/remember` `/memories` `/forget_me`"
+                "`/remember` `/memory` `/memories` "
+                "`/forget_me`"
+            ),
+            "Identity": (
+                "`/profile` `/relationship` `/set_name`"
             ),
             "Ambient": (
                 "`/ambient_on` `/ambient_off` "
@@ -404,7 +408,8 @@ class Utility(commands.Cog):
                 "Nothing was deleted. Run the command with "
                 "`confirm: True` to remove this server's "
                 "configuration, XP, warnings, chat history "
-                "and server-scoped user memories.",
+                "server-scoped user memories, profiles and "
+                "relationships.",
                 ephemeral=True
             )
             return

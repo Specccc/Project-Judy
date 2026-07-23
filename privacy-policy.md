@@ -17,6 +17,7 @@ Depending on enabled features, Judy may process or store:
 - moderation warnings and supplied reasons
 - recent conversation text in configured chat channels
 - user facts explicitly saved with `/remember`
+- preferred names, interaction counts, and server-scoped relationship scores
 - image search terms
 - operational error and diagnostic information
 
@@ -53,6 +54,8 @@ Retention depends on the data type:
   with `/conversation_clear`, deleted with `/data_delete`, or removed when Judy
   leaves the server
 - saved user facts remain until `/forget_me`, `/data_delete`, or server removal
+- profiles and relationship state remain until `/forget_me`, `/data_delete`, or
+  server removal
 - XP, warnings, and server configuration remain until `/data_delete` or server
   removal
 - operational logs and backups, if any, follow the host operator's retention
@@ -85,6 +88,8 @@ cannot directly control or delete copies retained in third-party systems.
 
 - `/conversation_clear` deletes the configured channel's recent conversation.
 - `/forget_me` deletes the requesting user's saved facts in the current server.
+- `/forget_me` also deletes the requesting user's profile and relationship
+  state in the current server.
 - `/data_delete confirm:True` deletes Judy's stored data for the current server.
 - Removing Judy from a server triggers automatic server-data cleanup.
 

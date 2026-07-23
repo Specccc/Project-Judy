@@ -28,6 +28,28 @@ The service provides:
 
 Chat and ambient cogs no longer create their own Gemini clients.
 
+For direct chat, the AI service also receives bounded server-scoped identity
+and relationship context from `identity_service.py`. Scores and internal tiers
+are context only and must not be exposed in normal conversation.
+
+## Identity and Relationships
+
+`identity_service.py` stores profiles and relationship state in
+`database/identity.db`.
+
+Each Discord server has an independent profile for a user. Direct interactions
+update:
+
+- current Discord display name
+- optional user-controlled preferred name
+- first and last interaction times
+- direct interaction count
+- bounded trust, familiarity, and affinity scores
+- a derived relationship tier
+
+Progression is deterministic, gradual, and clamped. It does not use a second AI
+request or allow one message to create a high-trust relationship.
+
 ## Public-Server Setup
 
 `guild_service.py` stores setup state in `database/guilds.db`.
@@ -56,6 +78,7 @@ Runtime SQLite databases:
 - `ambient.db`: ambient settings and ignored channels
 - `xp.db`: server-isolated XP
 - `moderation.db`: server-isolated warnings
+- `identity.db`: server-isolated profiles and relationships
 
 The memory manager stores recent channel conversations and server-scoped user
 facts in JSON. A one-server legacy installation automatically converts old
@@ -63,11 +86,11 @@ unscoped user-memory keys during the first 2.0 startup.
 
 ## Data Isolation and Deletion
 
-Server-specific records include a Discord guild ID. User facts are keyed by
-guild ID and user ID.
+Server-specific records include a Discord guild ID. User facts, profiles, and
+relationships are keyed by guild ID and user ID.
 
 `data_service.py` removes configuration, chat settings, ambient settings, XP,
-warnings, user memory, and known channel conversations when:
+warnings, user memory, identity state, and known channel conversations when:
 
 - an administrator confirms `/data_delete`
 - Judy is removed from a server
@@ -76,6 +99,7 @@ warnings, user memory, and known channel conversations when:
 
 - `chat.py`: direct conversation routing and recent context
 - `memory.py`: user-controlled server-scoped memories
+- `identity.py`: profile, preferred-name, and relationship commands
 - `ambient.py`: passive reactions, replies, and GIFs
 - `xp.py`: XP, ranks, and leaderboards
 - `images.py`: external image search

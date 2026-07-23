@@ -1,6 +1,6 @@
 Project Judy
-Version: 2.0.0
-Status: Production Stable
+Version: 2.1.0
+Status: Release Candidate
 
 Host:
 - GitHub
@@ -18,5 +18,8 @@ Completed:
 
 Production Verified: 23 July 2026
 
-Next Milestone:
-- v2.1.0 identity and relationship systems
+In Development:
+- v2.1.0 server-scoped identity and relationship systems
+- profile and relationship commands
+- AI identity context
+- migration and deletion validation

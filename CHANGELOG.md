@@ -68,5 +68,5 @@ Included in the production 2.0.0 release.
 
 ## v1.3.0 — Migration Build
 
-- Migrated Project Judy from Replit to GitHub and ACLClouds
+- Migrated Project Judy from Replit to GitHub and ACLClouds ( This was originally a passion project and a learning experiance. ) 
 - Added the modular project foundation

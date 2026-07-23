@@ -4,6 +4,12 @@ All notable changes to Project Judy are documented here.
 
 ## v2.0.0 — Unified AI Core
 
+**Released:** 23 July 2026
+
+Project Judy 2.0.0 was deployed to ACLClouds, synchronized with Discord, and
+validated in production across setup, health, chat, memory, ambient, image,
+leveling, moderation, diagnostics, and owner workflows.
+
 ### Added
 
 - Unified Gemini request service
@@ -20,8 +26,11 @@ All notable changes to Project Judy are documented here.
 - Prompt construction moved out of individual cogs
 - AI input is length-bounded and stored context is explicitly untrusted
 - Bot version and documentation updated to 2.0.0
+- Release status changed from release candidate to production stable
 
 ## v1.9.0 — Public-Server Readiness
+
+Included in the production 2.0.0 release.
 
 ### Added
 
